@@ -19,9 +19,10 @@ namespace ariel {
 
     public:
       NumberWithUnits(double amount, const std::string& unit_type);
+      ~NumberWithUnits();
       static void read_units(std::ifstream& file);
-      std::string get_unit();
-      double get_amount();
+      std::string get_unit() const;
+      double get_amount() const;
       NumberWithUnits operator+();
       NumberWithUnits operator+(const NumberWithUnits& other_num);
       NumberWithUnits& operator+=(const NumberWithUnits& other_num);
@@ -34,9 +35,12 @@ namespace ariel {
       NumberWithUnits operator++(int);
       NumberWithUnits operator--(int);
 
+      friend std::ostream& operator<<(std::ostream& os, const NumberWithUnits& num);
+      friend std::istream& operator>>(std::istream& is, NumberWithUnits& num);
+
   };
-  NumberWithUnits operator*(NumberWithUnits& obj, double num);
-  NumberWithUnits operator*(double num, NumberWithUnits& obj);
+  NumberWithUnits operator*(const NumberWithUnits& obj,const double num);
+  NumberWithUnits operator*(const double num, const NumberWithUnits& obj);
 
   bool operator>(const NumberWithUnits& left_num, const NumberWithUnits& right_num);
   bool operator>=(const NumberWithUnits& left_num, const NumberWithUnits& right_num);
@@ -45,6 +49,5 @@ namespace ariel {
   bool operator==(const NumberWithUnits& left_num, const NumberWithUnits& right_num);
   bool operator!=(const NumberWithUnits& left_num, const NumberWithUnits& right_num);
   
-  std::ostream& operator<<(std::ostream& os, const NumberWithUnits& num);
-  std::istream& operator>>(std::istream& is, NumberWithUnits& num);
+  
 }
