@@ -24,10 +24,10 @@ namespace ariel {
       std::string get_unit() const;
       double get_amount() const;
       NumberWithUnits operator+();
-      NumberWithUnits operator+(const NumberWithUnits& other_num);
+      NumberWithUnits operator+(const NumberWithUnits& other_num) const;
       NumberWithUnits& operator+=(const NumberWithUnits& other_num);
       NumberWithUnits operator-();
-      NumberWithUnits operator-(const NumberWithUnits& other_num);
+      NumberWithUnits operator-(const NumberWithUnits& other_num) const;
       NumberWithUnits& operator-=(const NumberWithUnits& other_num);
       
       NumberWithUnits& operator++();
